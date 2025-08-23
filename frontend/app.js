@@ -1,23 +1,27 @@
-let score = 0;
-let currentIndex = 0;
-
-const questions = [
-  { id: 0, text: 'Which OSI layer handles logical addressing and routing?', options: ['Data Link', 'Network', 'Transport', 'Session'], answer: 'Network' },
-  { id: 1, text: 'What is the default administrative distance of a static route?', options: ['0', '1', '90', '110'], answer: '1' },
-  { id: 2, text: 'Which protocol is used to discover the MAC address associated with an IPv4 address?', options: ['DNS', 'ICMP', 'ARP', 'RARP'], answer: 'ARP' },
-  { id: 3, text: 'What is the primary purpose of VLANs?', options: ['Increase bandwidth', 'Reduce broadcast domains', 'Encrypt traffic', 'Assign IP addresses'], answer: 'Reduce broadcast domains' },
-  { id: 4, text: 'Which command shows the routing table on a Cisco router?', options: ['show interfaces', 'show ip route', 'show ip protocols', 'show arp'], answer: 'show ip route' },
-  { id: 5, text: 'Which WAN technology uses labels to make forwarding decisions?', options: ['MPLS', 'Frame Relay', 'ATM', 'ISDN'], answer: 'MPLS' },
-  { id: 6, text: 'What is the private IP range for Class C?', options: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16', '169.254.0.0/16'], answer: '192.168.0.0/16' },
-  { id: 7, text: 'Which protocol provides loop-free topology in a switched network?', options: ['VTP', 'STP', 'CDP', 'LLDP'], answer: 'STP' },
-  { id: 8, text: 'Which IPv6 address type is equivalent to IPv4 public addresses?', options: ['Link-local', 'Unique local', 'Multicast', 'Global unicast'], answer: 'Global unicast' },
-  { id: 9, text: 'Which command enables OSPF process 1 on all interfaces in 10.0.0.0/8?', options: ['router ospf 1\\n network 10.0.0.0 0.0.0.255 area 0', 'router ospf 1\\n network 10.0.0.0 0.255.255.255 area 0', 'router ospf 1\\n network 10.0.0.0 255.0.0.0 area 0', 'router ospf 1\\n network 10.0.0.0 0.255.255.255 area 1'], answer: 'router ospf 1\\n network 10.0.0.0 0.255.255.255 area 0' }
-];
+const API_URL = 's';
 
 const question = document.querySelector('.question');
 const options = document.querySelectorAll('.option');
 const progress = document.querySelector('.progress');
 const info = document.querySelector('.info');
+
+let questions = []
+let score = 0;
+let currentIndex = 0;
+
+async function loadQuestions() {
+  try {
+    const response = await fetch('http://127.0.0.1:8000/questions');
+    if (!response.ok) {
+      throw new Error("Failed to fetch questions");
+    }
+    questions = await response.json();
+    console.log(questions);
+    loadQuestion();
+  } catch (error) {
+    console.error("Error loading questions:", error);
+  }
+}
 
 function loadQuestion() {
   const nextQuestion = questions[currentIndex];
@@ -29,10 +33,6 @@ function loadQuestion() {
     options[index].dataset.answer = option;
     options[index].classList.remove('disabled');
   });
-}
-
-function disableOptions() {
-  options.forEach(option => option.classList.add('disabled'));
 }
 
 function checkAnswer(selectedOption) {
@@ -64,10 +64,10 @@ function checkAnswer(selectedOption) {
   }
 }
 
-loadQuestion();
-
 options.forEach(option => {
   option.addEventListener('click', () => {
     checkAnswer(option);
   });
 });
+
+loadQuestions();
