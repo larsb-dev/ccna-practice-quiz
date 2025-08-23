@@ -12,10 +12,13 @@ So far I've coded in a very isolated way and have created and solved very few re
 
 ### 1. Backend API (FastAPI)
 
-- Create endpoint(s) to get practice questions
-- Adding query parameter to only get X nuber of questions
+- Creating endpoint(s) to get practice questions
+- Adding path parameter to get a question by ID
 - Adding a list of practice questions
 - Thinking about modeling the using Pydantic `Question`
+  - Turns out this is only needed for POST, PUT and DELETE requests
+- Adding validation and exception handling
+- Sending back the correct HTTP status codes
 - The data lives hardcoded not inside a database
 - Testing with Swagger or Insomnia
 

@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Path, Query
+from fastapi import FastAPI, Path, Query, HTTPException
+from starlette import status
 from Question import Question
 
 app = FastAPI()
@@ -16,10 +17,13 @@ questions = [
     Question(id=9, text="Which command enables OSPF process 1 on all interfaces in 10.0.0.0/8?", options=["router ospf 1\n network 10.0.0.0 0.0.0.255 area 0", "router ospf 1\n network 10.0.0.0 0.255.255.255 area 0", "router ospf 1\n network 10.0.0.0 255.0.0.0 area 0", "router ospf 1\n network 10.0.0.0 0.255.255.255 area 1"], answer="router ospf 1\n network 10.0.0.0 0.255.255.255 area 0"),
 ]
 
-@app.get("/questions")
+@app.get("/questions", status_code=status.HTTP_200_OK)
 async def get_questions():
     return questions
 
-@app.get("/questions/{id}")
+@app.get("/questions/{id}", status_code=status.HTTP_200_OK)
 async def get_question(id: int = Path(ge=0, lt=len(questions))):
-    return questions[id]
+    for question in questions:
+        if question.id == id:
+            return question
+    raise HTTPException(status_code=404, detail="Item not found")
