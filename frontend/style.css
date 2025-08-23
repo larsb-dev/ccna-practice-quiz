@@ -16,9 +16,16 @@ body {
 }
 
 .container {
-  max-width: 1140px;
+  width: 1140px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 32px;
+}
+
+.quiz {
+  padding: 32px;
+  background-color: #415162;
+  border-radius: 10px;
 }
 
 .progress {
@@ -28,12 +35,6 @@ body {
 
 .question {
   margin: 48px 0;
-}
-
-.question-box {
-  padding: 32px;
-  background-color: #415162;
-  border-radius: 10px;
 }
 
 .option {
