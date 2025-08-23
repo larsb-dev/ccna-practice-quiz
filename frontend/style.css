@@ -19,7 +19,7 @@ body {
   width: 1140px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 32px;
+  padding: 0 16px;
 }
 
 .quiz {
@@ -39,6 +39,8 @@ body {
 
 .option {
   display: block;
+  border-radius: 0;
+  border: none;
   width: 100%;
   margin-top: 16px;
   padding: 16px 0;
@@ -47,9 +49,13 @@ body {
   cursor: pointer;
 }
 
+.info {
+  display: none;
+}
+
 .footer {
   background-color: #f1c40f;
-  padding: 32px;
+  padding: 24px;
   text-align: center;
   color: #333;
 }
