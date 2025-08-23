@@ -41,5 +41,9 @@ So far I've coded in a very isolated way and have created and solved very few re
 - Deploy API on a DigitalOcean Docker droplet?
 - Use GitHub pages for front end hosting
 
+### 5. Additional features
+
+- Add previous and next question feature
+
 ## Learnings
 
