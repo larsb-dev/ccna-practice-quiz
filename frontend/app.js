@@ -15,7 +15,6 @@ async function loadQuestions() {
       throw new Error('Failed to fetch questions');
     }
     questions = await response.json();
-    console.log(questions);
     loadQuestion();
   } catch (error) {
     console.error('Error loading questions:', error);
