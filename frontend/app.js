@@ -1,9 +1,8 @@
-const API_URL = 's';
-
 const question = document.querySelector('.question');
 const options = document.querySelectorAll('.option');
 const progress = document.querySelector('.progress');
 const info = document.querySelector('.info');
+const reload = document.querySelector('.button-reload');
 
 let questions = []
 let score = 0;
@@ -13,13 +12,13 @@ async function loadQuestions() {
   try {
     const response = await fetch('http://127.0.0.1:8000/questions');
     if (!response.ok) {
-      throw new Error("Failed to fetch questions");
+      throw new Error('Failed to fetch questions');
     }
     questions = await response.json();
     console.log(questions);
     loadQuestion();
   } catch (error) {
-    console.error("Error loading questions:", error);
+    console.error('Error loading questions:', error);
   }
 }
 
@@ -52,6 +51,7 @@ function checkAnswer(selectedOption) {
   } else {
     options.forEach(option => {
       option.style.display = 'none';
+      reload.style.display = 'inline-block';
     })
     info.style.display = 'block';
     if (score / questions.length >= 0.7) {
