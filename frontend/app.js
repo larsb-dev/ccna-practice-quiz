@@ -29,7 +29,6 @@ function loadQuestion() {
   nextQuestion.options.forEach((option, index) => {
     options[index].textContent = option;
     options[index].dataset.answer = option;
-    options[index].classList.remove('disabled');
   });
 }
 
@@ -50,9 +49,9 @@ function checkAnswer(selectedOption) {
   } else {
     options.forEach(option => {
       option.style.display = 'none';
-      reload.style.display = 'inline-block';
     })
     info.style.display = 'block';
+    reload.style.display = 'inline-block';
     if (score / questions.length >= 0.7) {
       document.querySelector('body').style.backgroundColor = '#27ae60';
       question.textContent = `Congratulations 🎉 You have answered ${score}/${questions.length} questions correctly.`;

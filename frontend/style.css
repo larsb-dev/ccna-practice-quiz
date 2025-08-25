@@ -11,8 +11,8 @@ body {
   font-family: 'ABeeZee', sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
+  justify-content: flex-start;
+  min-height: 100vh;
 }
 
 .container {
@@ -28,6 +28,7 @@ body {
 
 .quiz {
   padding: 32px;
+  margin-bottom: 64px;
   background-color: #415162;
   border-radius: 10px;
 }
@@ -75,6 +76,7 @@ body {
 .footer {
   background-color: #f1c40f;
   padding: 24px;
+  margin-top: auto;
   text-align: center;
   color: #333;
 }
