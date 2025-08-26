@@ -2,7 +2,7 @@
 
 ## About
 
-This project features a full-stack [CCNA](https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccna/index.html) practice quiz web application where a backend API endpoint returns a list of practice questions that the frontend fetches and renders dynamically in the browser.
+This project features a full-stack [Cisco Certified Network Associate (CCNA)](https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccna/index.html) practice quiz web application where a backend API endpoint returns a list of practice questions that the frontend fetches and renders dynamically in the browser.
 
 ![CCNA Practice Quiz Question Screen](docs/ccna-practice-quiz-macbook-pro-mockup.jpg)
 
