@@ -10,9 +10,7 @@ This project features a full-stack [Cisco Certified Network Associate (CCNA)](ht
 
 Up until this point I've coded in a very isolated way and haven't really experienced how all the pieces of an application fit together. With this project I wanted to learn how the frontend talks to the backend by fetching data from one of my API endpoints. I've decided to develop an idea that has a manageable scope, because starting small prevents overwhelm and makes for a solid weekend project.
 
-To top it off, I've used Docker Compose and a DigitalOcean Linux droplet to deploy this app to the cloud. 
-
-The site is currently live and can be tested at https://ccna-practice-quiz.larsb.dev.
+To top it off, I've used Docker Compose and a DigitalOcean Linux droplet to deploy this app to the cloud.
 
 ## Development Flow
 
